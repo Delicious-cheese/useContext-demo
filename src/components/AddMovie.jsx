@@ -14,14 +14,18 @@ const AddMovie = () => {
 
     const addMovie = (e) => {
         e.preventDefault()
-        setMovies(preMovie => [
-            ...preMovie,
-            {
-                id: uuidV4(),
-                name,
-                price
-            }
-        ])
+        if (name && price) {
+            setMovies(preMovie => [
+                ...preMovie,
+                {
+                    id: uuidV4(),
+                    name,
+                    price
+                }
+            ])
+        } else {
+            alert('电影名和票价不能为空')
+        }
     }
 
     const handleName = (e) => {
@@ -37,7 +41,7 @@ const AddMovie = () => {
             <h5 style={{ margin: 0 }}>添加需要上架的电影名称以及票价</h5>
             <form onSubmit={addMovie}>
                 <input type="text" name="mname" value={name} onChange={handleName} />
-                <input type="number" name="mprice" max={200} value={price} onChange={handlePrice} />
+                <input type="number" name="mprice" min={30} max={200} value={price} onChange={handlePrice} />
                 <button type='submit'>添加</button>
             </form>
         </div>
