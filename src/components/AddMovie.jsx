@@ -5,7 +5,7 @@ import { v4 as uuidV4 } from 'uuid'
 const AddMovie = () => {
     const [movies, setMovies] = useContext(MovieCtx)
     const [name, setName] = useState('')
-    const [price, setPrice] = useState(0)
+    const [price, setPrice] = useState(30)
 
     useEffect(() => {
         localStorage.setItem('mvs', JSON.stringify(movies))
